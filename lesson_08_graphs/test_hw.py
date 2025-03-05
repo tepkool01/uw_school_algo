@@ -15,7 +15,7 @@ def dijkstras():
 
 
 def test_dijkstras(dijkstras):
-    assert dijkstras.get_shortest_distance('kirkland', 'kirkland') == 0
-    assert dijkstras.get_shortest_distance('kirkland', 'seattle') == 11.1
-    assert dijkstras.get_shortest_distance('kirkland', 'burien') == 21.5
-    assert dijkstras.get_shortest_distance('kirkland', 'renton') == 16.7
+    assert dijkstras.get_shortest_distance('kirkland', 'kirkland') == (0, ['kirkland'])
+    assert dijkstras.get_shortest_distance('kirkland', 'seattle') == (11.1, ['kirkland', 'seattle'])
+    assert dijkstras.get_shortest_distance('kirkland', 'burien') == (21.5, ['kirkland', 'seattle', 'burien'])
+    assert dijkstras.get_shortest_distance('kirkland', 'renton') == (16.7, ['kirkland', 'renton'])

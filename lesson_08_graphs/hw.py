@@ -8,6 +8,7 @@ class Dijkstras:
 	def get_shortest_distance(self, start, end):
 		# Store distances to all locations from the start, initial node (start) is set to 0
 		distances = {node: float('inf') for node in self.graph.keys()}
+		previous_locations = {node: None for node in self.graph.keys()}
 		distances[start] = 0
 
 		heap_stack = [(0, start)]  # distance, start node name (put distance first for heap sorting)
@@ -26,6 +27,24 @@ class Dijkstras:
 				new_distance = current_distance + miles
 				if new_distance < distances[neighbor]:
 					heapq.heappush(heap_stack, (new_distance, neighbor))
+					previous_locations[neighbor] = location
 					distances[neighbor] = new_distance
 
-		return distances[end]
+		current = end
+		path = []
+		while current:
+			path.append(current)
+			current = previous_locations[current]
+
+		path.reverse()
+		return distances[end], path
+
+
+# d = Dijkstras(graph = {
+#     'kirkland': {'seattle': 11.1, 'renton': 16.7},
+#     'seattle': {'kirkland': 11.1, 'renton': 12.2, 'burien': 10.4},
+#     'burien': {'seattle': 10.4, 'renton': 8.6},
+#     'renton': {'burien': 8.6, 'seattle': 12.2, 'kirkland': 16.7}
+# })
+# print(d.get_shortest_distance('kirkland', 'seattle'))
+# print(d.get_shortest_distance('kirkland', 'renton'))
