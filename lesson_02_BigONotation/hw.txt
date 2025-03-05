@@ -1,0 +1,9 @@
+1. O(N)
+2. - First: Fill 3L bucket, pour into 5L, fill 3L again, pour into 5L. 1L remains in 3L bucket. Empty 5L. Put 1L into 5L bucket. Fill 3L bucket and pour into 5L bucket
+- Second: Fill 5L bucket. Pour 5L into 3L. 2L remains in 5L. Empty 3L. Pour 5L into (2L) into 3L. Fill 5L and empty 1L into 3L bucket, leaving 4L in 5L bucket.
+The second approach is quicker and has fewer steps.
+3. I would traverse the array and compare the current value with the next value to make sure n1 < 7 < n2. It would be O(N). You could do binary search to reduce the complexity to LogN, but inserting the elements would still require shifting, which is N. 
+4. SayHiNTimes() - O(N)
+Sort() - O(n^2)
+Display() - O(N)
+PrintFirstItemThenFirstHalfThenSayHi100Times() - O(N)
